@@ -9,7 +9,7 @@
 
 #if 0
 #include "container.hpp"
-#include "algorithm.hpp"
+
 #include "mathnumber.hpp"
 #include "os.hpp"
 #include "functional.hpp"
@@ -17,15 +17,18 @@
 #include "memory.hpp"
 #include "tool.hpp"
 #include "stringandtext.hpp"
-#endif
 #include "thread.hpp"
 #include "asio.hpp"
+#endif
+
+#include "algorithm.hpp"
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 #if 0
 	container_test();
-	algorithm_test();
+	
 	mathnumber_test();
 	string_test();
 	functional_test();
@@ -34,9 +37,21 @@ int _tmain(int argc, _TCHAR* argv[])
 	tool_test();
 	os_test(argc, argv);
 	thread_test();
-#endif							
 	asio_test();
-	
+
+	int arr[] = { 1, 1, 2, 3, 5, 8, 13 };
+
+	int *b = 1[&arr];
+	int *c = 2[&arr];
+	int *d = 3[&arr];
+
+
+	for (int *p = arr; p < 1[&arr]; p++)
+		printf("%d\n", *p);
+#endif							
+
+	algorithm_test();
+
 	getchar();
 	return 0;
 }

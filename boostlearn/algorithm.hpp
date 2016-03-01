@@ -11,6 +11,7 @@ using namespace boost::assign;
 #include <boost/typeof/typeof.hpp>
 #include <boost/circular_buffer.hpp>
 #include <boost/unordered_set.hpp>
+#include <boost/array.hpp>
 
 void foreach_usage()
 {
@@ -73,7 +74,7 @@ void foreach_usage()
 	}
 
 	//boost::array
-	boost::array<int, 5> arr = (list_of(1),2,3,4,5);
+	::boost::array<int, 5> arr = (list_of(1),2,3,4,5);
 	foreach(int x, arr)
 	{
 		cout << x << " ";
@@ -111,17 +112,17 @@ void min_max_usage()
 {
 	cout << std::max(200, 12) << endl;
 	cout << std::min(200, 12) << endl;
-	boost::tuple<int, int> x = tie(minmax(1, 2).first, minmax(1, 2).second);
+	boost::tuple<int, int> x = boost::tie(minmax(1, 2).first, minmax(1, 2).second);
 	cout << x.get<1>() << " " << x.get<0>()<<endl;
 
 	string s1("5000"), s2("123BOSS");
 
 	auto xx = minmax(s1, s2);
-	boost::tuple<string, string> xxx = tie(xx.first, xx.second);
+	boost::tuple<string, string> xxx = boost::tie(xx.first, xx.second);
 	cout << xxx.get<1>() << " " << xxx.get<0>() << endl;
 
 	auto y = minmax(s1, s2, Comp());
-	boost::tuple<string, string> z = make_tuple(y.first, y.second);
+	boost::tuple<string, string> z = boost::make_tuple(y.first, y.second);
 	cout << z.get<1>() << " " << z.get<0>() << endl;
 }
 
@@ -174,12 +175,31 @@ void bubble_test()
 	printf("\n");
 }
 
+void find_perfect_number(int range){
+	for (int i = 1; i < range; i++){
+		int sum = 0;
+		for (int j = 1; j < i; j++){
+			if (i % j == 0)
+				sum += j;
+		}
+
+		if (sum == i)
+			cout << i << endl;
+	}
+
+	cout << typeid(range).name();
+	auto a = 10;
+}
+
 void algorithm_test()
 {
+#if 0
 	foreach_usage();
 	min_max_usage();
 	minmax_element_usage();
 	bubble_test();
+#endif
+	find_perfect_number(1000);
 }
 
 #endif //LEE_ALGORITHM
