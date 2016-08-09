@@ -21,9 +21,24 @@
 #include "asio.hpp"
 #endif
 
-#include "algorithm.hpp"
+//#include "algorithm.hpp"
 
+#define lambda(return_typ, function_body)	\
+({											\
+	return_typ fn function_body				\
+	fn ;									\
+})
 
+//lambda(int, (int x, int y) { return x > y ? x : y; })(4,5);
+
+class MyClass
+{
+public:
+	MyClass(){};
+	~MyClass(){};
+	
+private:
+};
 int _tmain(int argc, _TCHAR* argv[])
 {
 #if 0
@@ -50,7 +65,19 @@ int _tmain(int argc, _TCHAR* argv[])
 		printf("%d\n", *p);
 #endif							
 
-	algorithm_test();
+	//algorithm_test();
+
+	float base = 0.5;
+	int years = 0;
+
+	while (base < 1)
+	{
+		base = base + base*0.01f;
+		years++;
+	}
+
+	printf("%d", years);
+	
 
 	getchar();
 	return 0;
