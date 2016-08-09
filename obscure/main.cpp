@@ -1,7 +1,6 @@
 // obscure.cpp : 定义控制台应用程序的入口点。
 //
 
-#include "stdafx.h"
 #include <iostream>
 #include <stdlib.h>
 
@@ -45,7 +44,7 @@ struct Test {
 	~Test() { cout << "Test::~Test()" << endl; }
 };
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, int* argv[])
 {
 	// Must allocate our own memory
 	Test *ptr = (Test *)malloc(sizeof(Test));
@@ -59,8 +58,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	// Must release the memory ourselves
 	free(ptr);
 
-	//A a;
-	B b;
+	A a;
+	//B b;
 	system("pause");
 
 	return 0;
