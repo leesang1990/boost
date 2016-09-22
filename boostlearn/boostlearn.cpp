@@ -7,9 +7,9 @@
 #include <stdio.h>
 #include <cstdlib>
 
-#if 0
-#include "container.hpp"
 
+#include "container.hpp"
+#if 0
 #include "mathnumber.hpp"
 #include "os.hpp"
 #include "functional.hpp"
@@ -29,20 +29,31 @@
 	fn ;									\
 })
 
+template<int N>
+struct temp_fib
+{
+	enum{ res = temp_fib<N - 1>::res + temp_fib<N - 2>::res };
+};
+
+template<>
+struct temp_fib<1>{enum{ res = 1 };};
+
+template<>
+struct temp_fib<2>{enum{ res = 1 };};
+
 //lambda(int, (int x, int y) { return x > y ? x : y; })(4,5);
 
 class MyClass
 {
-public:
-	MyClass(){};
-	~MyClass(){};
-	
-private:
+	enum
+	{
+		em = 5
+	};
 };
 int _tmain(int argc, _TCHAR* argv[])
 {
 #if 0
-	container_test();
+	
 	
 	mathnumber_test();
 	string_test();
@@ -64,21 +75,25 @@ int _tmain(int argc, _TCHAR* argv[])
 	for (int *p = arr; p < 1[&arr]; p++)
 		printf("%d\n", *p);
 #endif							
-
+	//container_test();
 	//algorithm_test();
 
-	float base = 0.5;
-	int years = 0;
-
-	while (base < 1)
-	{
-		base = base + base*0.01f;
-		years++;
-	}
-
-	printf("%d", years);
+// 	float base = 0.5;
+// 	int years = 0;
+// 
+// 	while (base < 1)
+// 	{
+// 		base = base + base*0.01f;
+// 		years++;
+// 	}
+// 
+// 	printf("%d", years);
 	
+	MyClass a; 
 
+	cout << temp_fib<209>().res;
+
+	
 	getchar();
 	return 0;
 }
