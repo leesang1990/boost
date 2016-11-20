@@ -17,6 +17,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="leecode.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{030A24CB-DC89-44A5-B4C9-25DCA47A580C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
